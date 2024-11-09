@@ -8,66 +8,50 @@ errTr_t AkinatorCtor (tree_t* tree)
     tree->root = (node_t*)calloc (1, sizeof (*tree->root));
     if (!tree->root)
     {
-        fprintf (tree->log_file, "ERROR: not enough memory\n"
-                                 "calloc of tree->root returned NULL\n");
+        printf ("ERROR: not enough memory\n"
+                "calloc of tree->root returned NULL\n");
         return ERROR_CTOR_TREE;
     }
-    tree->root->data = 50;
+    tree->root->text = (char*) calloc (SIZE_TEXT, sizeof (char));
+    if (!tree->root->text)
+    {
+        printf ("ERROR: not enough memory\n"
+                "calloc of tree->root returned NULL\n");
+        return ERROR_CTOR_TREE;
+    }
+
+    const char text[SIZE_TEXT] = "Животное";
+    for (int i = 0; i < SIZE_TEXT; i++)
+    {
+        printf ("i = <%d>\n text[%d] = <%c>\n", i, i, text[i]);
+        if (text[i] == '\0' || text[i] == '\n' || text[i] == '\r' || text[i] == '?')
+        {
+            break;
+        }
+        tree->root->text[i] = text[i];
+    }
 
     tree->root->left  = NULL;
     tree->root->right = NULL;
 
     tree->crnt_node = tree->root;
 
-    AkinatorDump (tree);
-
     return TREE_OK;
 }
 
-void AkinatorDtor (tree_t* tree)
-{
-    AkinatorDump (tree);
-    ClearTree (tree->root);
-}
-
-errTr_t AkinatorInsert (tree_t* tree, int data)
-{
-    AkinatorDump (tree);
-    if (data < tree->crnt_node->data)
-    {
-        if (!tree->crnt_node->left)
-        {
-            NewNode (data, tree->crnt_node, LEFT);
-            tree->crnt_node = tree->root;
-            return TREE_OK;
-        }
-        else
-        {
-            tree->crnt_node = tree->crnt_node->left;
-            AkinatorInsert (tree, data);
-        }
-    }
-    else
-    {
-        if (!tree->crnt_node->right)
-        {
-            NewNode (data, tree->crnt_node, RIGHT);
-            tree->crnt_node = tree->root;
-            return TREE_OK;
-        }
-        else
-        {
-            tree->crnt_node = tree->crnt_node->right;
-            AkinatorInsert (tree, data);
-        }
-    }
-    return TREE_OK;
-}
-
-errTr_t NewNode (int data, node_t* parrent, brnch_side_t branch_side)
+errTr_t NewNode (const char* text, node_t* parrent, brnch_side_t branch_side)
 {
     node_t* node = (node_t*)calloc (1, sizeof (*node));
-    node->data = data;
+    node->text = (char*) calloc (SIZE_TEXT, sizeof (char));
+
+    for (int i = 0; i < SIZE_TEXT; i++)
+    {
+        if (text[i] == '\0' || text[i] == '\n' || text[i] == '\r' || text[i] == '?')
+        {
+            break;
+        }
+        node->text[i] = text[i];
+    }
 
     node->left  = NULL;
     node->right = NULL;
@@ -85,6 +69,12 @@ errTr_t NewNode (int data, node_t* parrent, brnch_side_t branch_side)
     return TREE_OK;
 }
 
+void AkinatorDtor (tree_t* tree)
+{
+    AkinatorDump (tree);
+    ClearTree (tree->root);
+}
+
 void ClearTree (node_t* node)
 {
     if (!node)
@@ -100,6 +90,9 @@ void ClearTree (node_t* node)
     {
         ClearTree (node->right);
     }
+
+    free (node->text);
+    node->text = NULL;
 
     free (node);
     node = NULL;

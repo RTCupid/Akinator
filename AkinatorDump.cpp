@@ -46,14 +46,14 @@ void Print (tree_t tree, node_t* node, FILE* dot_file)
     if (node == tree.crnt_node)
     {
         fprintf (dot_file, "\t node%p [shape=Mrecord; style=filled; color=\"#687864\"; "
-            "label =  \"{node: %p | data: %3d | prnt: %p | {<left>left: %p | <right>right: %p}  }\" ];\n",
-            node, node, node->data, node->prnt, node->left, node->right);
+            "label =  \"{node: %p | text: %s | prnt: %p | {<left>left: %p | <right>right: %p}  }\" ];\n",
+            node, node, node->text, node->prnt, node->left, node->right);
     }
     else
     {
         fprintf (dot_file, "\t node%p [shape=Mrecord; style=filled; color=\"#8FC1E3\"; "
-            "label =  \"{node: %p | data: %3d | prnt: %p | {<left>left: %p | <right>right: %p}  }\" ];\n",
-            node, node, node->data, node->prnt, node->left, node->right);
+            "label =  \"{node: %p | text: %s | prnt: %p | {<left>left: %p | <right>right: %p}  }\" ];\n",
+            node, node, node->text, node->prnt, node->left, node->right);
     }
 
     if (node->left)
