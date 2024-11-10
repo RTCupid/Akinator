@@ -1,21 +1,21 @@
 digraph G {
 	rankdir = HR;
 	bgcolor="#F7F9FB"
-	 node0x503000000040 [shape=Mrecord; style=filled; color="#687864"; label =  "{node: 0x503000000040 | text: Животное | prnt: (nil) | {<left>left: 0x5030000000a0 | <right>right: 0x503000000100}  }" ];
-	 node0x503000000040:<left> -> node0x5030000000a0 [style=bold; weight=1000; ];
-	 node0x503000000040:<right> -> node0x503000000100 [style=bold; weight=1000; ];
-	 node0x5030000000a0 [shape=Mrecord; style=filled; color="#8FC1E3"; label =  "{node: 0x5030000000a0 | text: Полторашка | prnt: 0x503000000040 | {<left>left: (nil) | <right>right: (nil)}  }" ];
-	 node0x503000000100 [shape=Mrecord; style=filled; color="#8FC1E3"; label =  "{node: 0x503000000100 | text: Ведёт Дискру | prnt: 0x503000000040 | {<left>left: 0x503000000160 | <right>right: 0x5030000001c0}  }" ];
-	 node0x503000000100:<left> -> node0x503000000160 [style=bold; weight=1000; ];
-	 node0x503000000100:<right> -> node0x5030000001c0 [style=bold; weight=1000; ];
-	 node0x503000000160 [shape=Mrecord; style=filled; color="#8FC1E3"; label =  "{node: 0x503000000160 | text: Бурцев | prnt: 0x503000000100 | {<left>left: (nil) | <right>right: (nil)}  }" ];
-	 node0x5030000001c0 [shape=Mrecord; style=filled; color="#8FC1E3"; label =  "{node: 0x5030000001c0 | text: Ведёт Физос | prnt: 0x503000000100 | {<left>left: 0x503000000220 | <right>right: 0x503000000340}  }" ];
-	 node0x5030000001c0:<left> -> node0x503000000220 [style=bold; weight=1000; ];
-	 node0x5030000001c0:<right> -> node0x503000000340 [style=bold; weight=1000; ];
-	 node0x503000000220 [shape=Mrecord; style=filled; color="#8FC1E3"; label =  "{node: 0x503000000220 | text: NEFOR | prnt: 0x5030000001c0 | {<left>left: 0x503000000280 | <right>right: 0x5030000002e0}  }" ];
-	 node0x503000000220:<left> -> node0x503000000280 [style=bold; weight=1000; ];
-	 node0x503000000220:<right> -> node0x5030000002e0 [style=bold; weight=1000; ];
-	 node0x503000000280 [shape=Mrecord; style=filled; color="#8FC1E3"; label =  "{node: 0x503000000280 | text: Колдунов | prnt: 0x503000000220 | {<left>left: (nil) | <right>right: (nil)}  }" ];
-	 node0x5030000002e0 [shape=Mrecord; style=filled; color="#8FC1E3"; label =  "{node: 0x5030000002e0 | text: Овчос | prnt: 0x503000000220 | {<left>left: (nil) | <right>right: (nil)}  }" ];
-	 node0x503000000340 [shape=Mrecord; style=filled; color="#8FC1E3"; label =  "{node: 0x503000000340 | text: Чубаров | prnt: 0x5030000001c0 | {<left>left: (nil) | <right>right: (nil)}  }" ];
+	 node0x503000000040 [shape=Mrecord; style=filled; color="#687864"; label =  "Животное? " ];
+	 node0x503000000040 -> node0x5030000000a0 [label="Да"; style=bold; weight=1000; ];
+	 node0x503000000040 -> node0x503000000100 [label="Нет"; style=bold; weight=1000; ];
+	 node0x5030000000a0 [shape=Mrecord; style=filled; color="#8FC1E3"; label =  "Полторашка " ];
+	 node0x503000000100 [shape=Mrecord; style=filled; color="#5085A5"; label =  "Ведёт дискру? " ];
+	 node0x503000000100 -> node0x503000000160 [label="Да"; style=bold; weight=1000; ];
+	 node0x503000000100 -> node0x5030000001c0 [label="Нет"; style=bold; weight=1000; ];
+	 node0x503000000160 [shape=Mrecord; style=filled; color="#8FC1E3"; label =  "Бурцев " ];
+	 node0x5030000001c0 [shape=Mrecord; style=filled; color="#5085A5"; label =  "Ведёт физос? " ];
+	 node0x5030000001c0 -> node0x503000000220 [label="Да"; style=bold; weight=1000; ];
+	 node0x5030000001c0 -> node0x503000000340 [label="Нет"; style=bold; weight=1000; ];
+	 node0x503000000220 [shape=Mrecord; style=filled; color="#5085A5"; label =  "Нефор? " ];
+	 node0x503000000220 -> node0x503000000280 [label="Да"; style=bold; weight=1000; ];
+	 node0x503000000220 -> node0x5030000002e0 [label="Нет"; style=bold; weight=1000; ];
+	 node0x503000000280 [shape=Mrecord; style=filled; color="#8FC1E3"; label =  "Колдунов " ];
+	 node0x5030000002e0 [shape=Mrecord; style=filled; color="#8FC1E3"; label =  "Овчос " ];
+	 node0x503000000340 [shape=Mrecord; style=filled; color="#8FC1E3"; label =  "Чубаров " ];
 }

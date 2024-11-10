@@ -38,11 +38,17 @@
 
     void AkinatorDump (tree_t* tree);
 
+    void AkinatorGraphviz (tree_t* tree);
+
     void Pause ();
 
-    void MakeDotFile (tree_t* tree);
+    void MakeDotFileDump (tree_t* tree);
 
-   void Print (tree_t tree, node_t* node, FILE* dot_file);
+    void MakeDotFileGraphviz (tree_t* tree);
+
+   void PrintDump (tree_t tree, node_t* node, FILE* dot_file);
+
+   void PrintGraphviz (tree_t tree, node_t* node, FILE* dot_file);
 
     errTr_t NewNode (const char* text, node_t* parrent, brnch_side_t branch_side);
 

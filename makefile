@@ -14,8 +14,11 @@ FLAGS = -D _DEBUG -ggdb3 -std=c++17 -O0 -Wall -Wextra -Weffc++ \
 	nonnull-attribute,null,object-size,return,returns-nonnull-attribute,shift,$\
 	signed-integer-overflow,undefined,unreachable,vla-bound,vptr
 
-a.exe: Akinator.o AkinatorDump.o main.o
-	$(CC) Akinator.o main.o AkinatorDump.o -o a.exe $(FLAGS)
+a.exe: Akinator.o AkinatorDump.o AkntrFunc.o main.o
+	$(CC) Akinator.o  AkinatorDump.o AkntrFunc.o main.o -o a.exe $(FLAGS)
+
+AkntrFunc.o: AkntrFunc.cpp Akinator.h
+	$(CC) -c AkntrFunc.cpp -o AkntrFunc.o $(FLAGS)
 
 AkinatorDump.o: AkinatorDump.cpp Akinator.h
 	$(CC) -c AkinatorDump.cpp -o AkinatorDump.o $(FLAGS)

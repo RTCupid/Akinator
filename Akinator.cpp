@@ -23,7 +23,7 @@ errTr_t AkinatorCtor (tree_t* tree)
     const char text[SIZE_TEXT] = "Животное";
     for (int i = 0; i < SIZE_TEXT; i++)
     {
-        printf ("i = <%d>\n text[%d] = <%c>\n", i, i, text[i]);
+        //printf ("i = <%d>\n text[%d] = <%c>\n", i, i, text[i]);
         if (text[i] == '\0' || text[i] == '\n' || text[i] == '\r' || text[i] == '?')
         {
             break;
@@ -71,7 +71,6 @@ errTr_t NewNode (const char* text, node_t* parrent, brnch_side_t branch_side)
 
 void AkinatorDtor (tree_t* tree)
 {
-    AkinatorDump (tree);
     ClearTree (tree->root);
 }
 

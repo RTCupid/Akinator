@@ -11,7 +11,7 @@ void AkinatorDump (tree_t* tree)
 
     fprintf (tree->log_file, "<FONT SIZE=\"6\"><center>My Akinator:</center><FONT SIZE=\"5\">\n\n");
 
-    MakeDotFile (tree);
+    MakeDotFileDump (tree);
 
     system ("dot -Tpng DumpAkinator.dot -o Akinator.png");
 
@@ -22,7 +22,7 @@ void AkinatorDump (tree_t* tree)
     PS Pause ();
 }
 
-void MakeDotFile (tree_t* tree)
+void MakeDotFileDump (tree_t* tree)
 {
     FILE* dot_file = fopen ("DumpAkinator.dot", "wt");
 
@@ -30,13 +30,13 @@ void MakeDotFile (tree_t* tree)
     fprintf (dot_file, "\trankdir = HR;\n");
     fprintf (dot_file, "\tbgcolor=\"#F7F9FB\"\n");
 
-    Print (*tree, tree->root, dot_file);
+    PrintDump (*tree, tree->root, dot_file);
 
     fprintf (dot_file, "}\n");
     fclose (dot_file);
 }
 
-void Print (tree_t tree, node_t* node, FILE* dot_file)
+void PrintDump (tree_t tree, node_t* node, FILE* dot_file)
 {
     if (!node)
     {
@@ -66,10 +66,10 @@ void Print (tree_t tree, node_t* node, FILE* dot_file)
     }
 
     /*......LEFT......*/
-    Print (tree, node->left, dot_file);
+    PrintDump (tree, node->left, dot_file);
 
     /*......RIGHT......*/
-    Print (tree, node->right, dot_file);
+    PrintDump (tree, node->right, dot_file);
 }
 
 void Pause ()
