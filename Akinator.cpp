@@ -26,16 +26,18 @@ errTr_t AkinatorCtor (tree_t* akntr)
         return ERROR_CTOR_TREE;
     }
 
+    akntr->text= (char*) calloc (SIZE_TEXT, sizeof (akntr->text));
+
     const char text[SIZE_TEXT] = "Животное";
     for (int i = 0; i < SIZE_TEXT; i++)
     {
-        //printf ("i = <%d>\n text[%d] = <%c>\n", i, i, text[i]);
         if (text[i] == '\0' || text[i] == '\n' || text[i] == '\r' || text[i] == '?')
         {
             break;
         }
         akntr->root->text[i] = text[i];
     }
+
 
     akntr->root->left  = NULL;
     akntr->root->right = NULL;
@@ -81,6 +83,9 @@ void AkinatorDtor (tree_t* akntr)
 
     free (akntr->base);
     akntr->base = NULL;
+
+    free (akntr->text);
+    akntr->text = NULL;
 
     akntr->crnt_node = NULL;
 

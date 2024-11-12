@@ -3,11 +3,6 @@
 
     errTr_t MakeAkinatorBase (tree_t* akntr, const char* namefile);
 
-    errTr_t InputAkinatorBase (tree_t* akntr, const char* namefile);
-
-    errTr_t RunAkinatorBase (tree_t* akntr);
-
-    bool SizeFile (struct stat* fileInf, const char* nameFile);
-
+    void RunAkinatorBase (tree_t* akntr, FILE* base_file);
 
 #endif

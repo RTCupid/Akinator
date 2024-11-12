@@ -10,14 +10,14 @@ int main ()
 
     MakeAkinatorBase (&akntr, "AkinatorBase.txt");
 
-    NewNode ("Полторашка", akntr.root, LEFT);
+    /*NewNode ("Полторашка", akntr.root, LEFT);
     NewNode ("Ведёт дискру", akntr.root, RIGHT);
     NewNode ("Бурцев", akntr.root->right, LEFT);
     NewNode ("Ведёт физос", akntr.root->right, RIGHT);
     NewNode ("Нефор", akntr.root->right->right, LEFT);
     NewNode ("Колдунов", akntr.root->right->right->left, LEFT);
     NewNode ("Овчос", akntr.root->right->right->left, RIGHT);
-    NewNode ("Чубаров", akntr.root->right->right, RIGHT);
+    NewNode ("Чубаров", akntr.root->right->right, RIGHT);*/
 
     AkinatorGraphviz (&akntr);
 

@@ -32,6 +32,7 @@
         FILE* log_file;
         char* base;
         size_t nElemBase;
+        char* text;
     } tree_t;
 
     const int SIZE_TEXT = 30;
