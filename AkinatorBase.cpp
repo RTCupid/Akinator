@@ -39,8 +39,6 @@ void RunAkinatorBase (tree_t* akntr, FILE* base_file)
         fscanf (base_file, "\"%[^\"]\"", akntr->text);
         printf ("text = <%s>\n", akntr->text);
 
-        //akntr->crnt_node = akntr->root;
-
         NewNode (akntr->text, akntr->crnt_node, LEFT);
         akntr->crnt_node = akntr->crnt_node->left;
         RunAkinatorBase (akntr, base_file);
