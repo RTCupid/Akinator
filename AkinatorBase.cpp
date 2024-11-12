@@ -19,60 +19,43 @@ errTr_t MakeAkinatorBase (tree_t* akntr, const char* namefile)
 
 void RunAkinatorBase (tree_t* akntr, FILE* base_file)
 {
-    static int side = -1;
-
     char symbol = '\0';
     fscanf (base_file, "%c", &symbol);
-    printf ("symbol = <%c>\n", symbol);
 
     if (symbol != '{' && symbol != '}')
     {
         ungetc (symbol, base_file);
-        fscanf (base_file, "%[^{}]", akntr->text);
-        printf ("skipping text = <%s>\n", akntr->text);
+        fscanf (base_file, "%[^{]", akntr->text);
     }
     else
     {
         ungetc (symbol, base_file);
     }
+
     fscanf (base_file, "%c", &symbol);
-    printf ("again symbol = <%c>\n", symbol);
+
     if (symbol == '{')
     {
-        side *= -1;
         fscanf (base_file, "\"%[^\"]\"", akntr->text);
         printf ("text = <%s>\n", akntr->text);
 
-        if (side == 1)
-        {
-            printf ("side = 1\n");
-            NewNode (akntr->text, akntr->crnt_node, LEFT);
-            node_t* parent = akntr->crnt_node;
-            akntr->crnt_node = akntr->crnt_node->left;
+        //akntr->crnt_node = akntr->root;
 
-            RunAkinatorBase (akntr, base_file);
-            printf ("return\n");
+        NewNode (akntr->text, akntr->crnt_node, LEFT);
+        akntr->crnt_node = akntr->crnt_node->left;
+        RunAkinatorBase (akntr, base_file);
 
-            akntr->crnt_node = parent;
-        }
-        if (side == -1)
-        {
-            printf ("side = -1\n");
-            NewNode (akntr->text, akntr->crnt_node, RIGHT);
-            node_t* parent = akntr->crnt_node;
-            akntr->crnt_node = akntr->crnt_node->right;
+        NewNode (akntr->text, akntr->crnt_node, RIGHT);
+        akntr->crnt_node = akntr->crnt_node->right;
+        RunAkinatorBase (akntr, base_file);
 
-            RunAkinatorBase (akntr, base_file);
-            printf ("return\n");
-
-            akntr->crnt_node = parent;
-        }
+        //errTr_t NewNode (const char* text, node_t* parrent, brnch_side_t branch_side)
     }
-    else if (symbol == '}')
+    if (symbol == '}')
     {
-        side *= -1;
+        printf ("return\n");
         return;
     }
-    return;
 }
+
 
