@@ -1,23 +1,27 @@
 #include <stdio.h>
 
 #include "Akinator.h"
+#include "AkinatorBase.h"
 
 int main ()
 {
-    tree_t tree = {};
-    AkinatorCtor (&tree);
-    NewNode ("Полторашка", tree.root, LEFT);
-    NewNode ("Ведёт дискру", tree.root, RIGHT);
-    NewNode ("Бурцев", tree.root->right, LEFT);
-    NewNode ("Ведёт физос", tree.root->right, RIGHT);
-    NewNode ("Нефор", tree.root->right->right, LEFT);
-    NewNode ("Колдунов", tree.root->right->right->left, LEFT);
-    NewNode ("Овчос", tree.root->right->right->left, RIGHT);
-    NewNode ("Чубаров", tree.root->right->right, RIGHT);
+    tree_t akntr = {};
+    AkinatorCtor (&akntr);
 
-    AkinatorGraphviz (&tree);
+    MakeAkinatorBase (&akntr, "AkinatorBase.txt");
 
-    AkinatorDtor (&tree);
+    NewNode ("Полторашка", akntr.root, LEFT);
+    NewNode ("Ведёт дискру", akntr.root, RIGHT);
+    NewNode ("Бурцев", akntr.root->right, LEFT);
+    NewNode ("Ведёт физос", akntr.root->right, RIGHT);
+    NewNode ("Нефор", akntr.root->right->right, LEFT);
+    NewNode ("Колдунов", akntr.root->right->right->left, LEFT);
+    NewNode ("Овчос", akntr.root->right->right->left, RIGHT);
+    NewNode ("Чубаров", akntr.root->right->right, RIGHT);
+
+    AkinatorGraphviz (&akntr);
+
+    AkinatorDtor (&akntr);
     return 0;
 }
 

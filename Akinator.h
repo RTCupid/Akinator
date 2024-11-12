@@ -5,8 +5,10 @@
     {
         TREE_OK = 0,
         ERROR_CTOR_TREE,
-
-
+        ERROR_SIZE_FILE,
+        ERROR_CALLOC_BASE,
+        ERROR_FOPEN_BASE,
+        ERROR_FREAD_RETURN_ZERO,
     };
 
     enum brnch_side_t
@@ -28,6 +30,8 @@
         node_t* root;
         node_t* crnt_node;
         FILE* log_file;
+        char* base;
+        size_t nElemBase;
     } tree_t;
 
     const int SIZE_TEXT = 30;

@@ -1,19 +1,25 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <errno.h>
 
 #include "Akinator.h"
+#include "AkinatorBase.h"
 
-errTr_t AkinatorCtor (tree_t* tree)
+errTr_t AkinatorCtor (tree_t* akntr)
 {
-    tree->root = (node_t*)calloc (1, sizeof (*tree->root));
-    if (!tree->root)
+    akntr->log_file = fopen ("log_file.htm", "wt");
+
+    akntr->root = (node_t*)calloc (1, sizeof (*akntr->root));
+    if (!akntr->root)
     {
         printf ("ERROR: not enough memory\n"
                 "calloc of tree->root returned NULL\n");
         return ERROR_CTOR_TREE;
     }
-    tree->root->text = (char*) calloc (SIZE_TEXT, sizeof (char));
-    if (!tree->root->text)
+    akntr->root->text = (char*) calloc (SIZE_TEXT, sizeof (char));
+    if (!akntr->root->text)
     {
         printf ("ERROR: not enough memory\n"
                 "calloc of tree->root returned NULL\n");
@@ -28,13 +34,13 @@ errTr_t AkinatorCtor (tree_t* tree)
         {
             break;
         }
-        tree->root->text[i] = text[i];
+        akntr->root->text[i] = text[i];
     }
 
-    tree->root->left  = NULL;
-    tree->root->right = NULL;
+    akntr->root->left  = NULL;
+    akntr->root->right = NULL;
 
-    tree->crnt_node = tree->root;
+    akntr->crnt_node = akntr->root;
 
     return TREE_OK;
 }
@@ -69,9 +75,16 @@ errTr_t NewNode (const char* text, node_t* parrent, brnch_side_t branch_side)
     return TREE_OK;
 }
 
-void AkinatorDtor (tree_t* tree)
+void AkinatorDtor (tree_t* akntr)
 {
-    ClearTree (tree->root);
+    ClearTree (akntr->root);
+
+    free (akntr->base);
+    akntr->base = NULL;
+
+    akntr->crnt_node = NULL;
+
+    fclose (akntr->log_file);
 }
 
 void ClearTree (node_t* node)
