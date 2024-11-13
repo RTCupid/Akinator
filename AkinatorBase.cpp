@@ -21,7 +21,7 @@ void RunAkinatorBase (tree_t* akntr, FILE* base_file, node_t* crnt_node, brnch_s
 {
     SkipSlashRN (base_file);
     char symbol = '\0';
-    fscanf (base_file, "%c", &symbol);
+    fscanf (base_file, " %c", &symbol);
     printf ("start symbol = <%c>\n", symbol);
 
     if (symbol == '{')
@@ -29,24 +29,12 @@ void RunAkinatorBase (tree_t* akntr, FILE* base_file, node_t* crnt_node, brnch_s
         fscanf (base_file, "\"%[^\"]\"", akntr->text);
         printf ("text = <%s>\n", akntr->text);
 
-        if (branch_side == LEFT)
-        {
-            NewNode (akntr->text, crnt_node, branch_side, akntr);
-            printf ("New node = <%p>\n", crnt_node);
-            crnt_node = crnt_node->left;
-        }
-        if (branch_side == RIGHT)
-        {
-            NewNode (akntr->text, crnt_node, branch_side, akntr);
-            printf ("New node = <%p>\n", crnt_node);
-            crnt_node = crnt_node->right;
-        }
+        NewNodeInBranch (akntr, crnt_node, branch_side);
 
         SkipSlashRN (base_file);
 
         fscanf (base_file, "%c", &symbol);
         printf ("end symbol = <%c>\n", symbol);
-
 
         if (symbol == '}')
         {
@@ -70,6 +58,38 @@ void RunAkinatorBase (tree_t* akntr, FILE* base_file, node_t* crnt_node, brnch_s
     {
         printf ("return\n");
         return;
+    }
+}
+
+void NewNodeInBranch (tree_t* akntr, node_t* crnt_node, brnch_side_t branch_side)
+{
+    if (branch_side == LEFT)
+    {
+        NewNode (akntr->text, crnt_node, branch_side, akntr);
+        if (crnt_node)
+        {
+            printf ("New node = <%p>\n", crnt_node->left);
+            crnt_node = crnt_node->left;
+        }
+        else
+        {
+            crnt_node = akntr->root;
+            printf ("New Node = <%p>\n", crnt_node);
+        }
+    }
+    if (branch_side == RIGHT)
+    {
+        NewNode (akntr->text, crnt_node, branch_side, akntr);
+        if (crnt_node)
+        {
+            printf ("New node = <%p>\n", crnt_node->right);
+            crnt_node = crnt_node->right;
+        }
+        else
+        {
+            crnt_node = akntr->root;
+            printf ("New Node = <%p>\n", crnt_node);
+        }
     }
 }
 

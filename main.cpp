@@ -20,6 +20,30 @@ int main ()
     NewNode ("Колдунов", akntr.root->right->right->left, LEFT);
     NewNode ("Овчос", akntr.root->right->right->left, RIGHT);
     NewNode ("Чубаров", akntr.root->right->right, RIGHT);*/
+#if 0
+    node_t* NewNode(const char* text, node_t* left = nullptr, node_t* right = nullptr)
+    {
+        node_t* node = (node_t*)calloc(1, sizeof(node_t));
+        node->text = text;
+        node->left = left;
+        node->right = right;
+        return node;
+    }
+#endif
+    /*
+    NewNode("Бурцев")
+    NewNode("Бурцев")
+    NewNode("Бурцев")
+    NewNode
+        ( "Полторашка"
+        , NewNode
+            ( "Ведёт дискру"
+                , NewNode("Бурцев")
+                , NewNode("Колдунов")
+            )
+        , NewNode("Чубаров")
+        );
+    */
 
     AkinatorGraphviz (&akntr);
 
