@@ -55,7 +55,7 @@
 
    void PrintGraphviz (tree_t tree, node_t* node, FILE* dot_file);
 
-    errTr_t NewNode (const char* text, node_t* parrent, brnch_side_t branch_side, tree_t* akntr);
+    node_t* NewNode (const char* text, node_t* left, node_t* right);
 
     void ClearTree (node_t* node);
 

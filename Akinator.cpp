@@ -48,7 +48,7 @@ errTr_t AkinatorCtor (tree_t* akntr)
     return TREE_OK;
 }
 
-errTr_t NewNode (const char* text, node_t* parrent, brnch_side_t branch_side, tree_t* akntr)
+node_t* NewNode (const char* text, node_t* left = nullptr, node_t* right = nullptr)
 {
     node_t* node = (node_t*)calloc (1, sizeof (*node));
     node->text = (char*) calloc (SIZE_TEXT, sizeof (char));
@@ -62,33 +62,17 @@ errTr_t NewNode (const char* text, node_t* parrent, brnch_side_t branch_side, tr
         node->text[i] = text[i];
     }
 
-    node->left  = NULL;
-    node->right = NULL;
-    node->prnt  = parrent;
-
-    if (parrent)
-    {
-        if (branch_side == LEFT)
-        {
-            parrent->left = node;
-        }
-        else
-        {
-            parrent->right = node;
-        }
-    }
-    if (!parrent && !akntr->root)
-    {
-        akntr->root = node;
-        akntr->crnt_node = akntr->root;
-    }
+    node->left  = left;
+    node->right = right;
 
     printf ("New node = <%p>\n\n", node);
-    return TREE_OK;
+    return node;
 }
 
 void AkinatorDtor (tree_t* akntr)
 {
+    fclose (akntr->log_file);
+
     ClearTree (akntr->root);
 
     free (akntr->base);
@@ -98,8 +82,6 @@ void AkinatorDtor (tree_t* akntr)
     akntr->text = NULL;
 
     akntr->crnt_node = NULL;
-
-    fclose (akntr->log_file);
 }
 
 void ClearTree (node_t* node)

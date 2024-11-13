@@ -2,4 +2,12 @@ digraph G {
 	rankdir = HR;
 	bgcolor="#F7F9FB"
 	 node0x503000000040 [shape=Mrecord; style=filled; color="#687864"; label =  "Животное? " ];
+	 node0x503000000040 -> node0x5030000000a0 [label="Да"; style=bold; weight=1000; ];
+	 node0x503000000040 -> node0x503000000100 [label="Нет"; style=bold; weight=1000; ];
+	 node0x5030000000a0 [shape=Mrecord; style=filled; color="#8FC1E3"; label =  "Полторашка " ];
+	 node0x503000000100 [shape=Mrecord; style=filled; color="#5085A5"; label =  "Связан с аниме? " ];
+	 node0x503000000100 -> node0x503000000160 [label="Да"; style=bold; weight=1000; ];
+	 node0x503000000100 -> node0x5030000001c0 [label="Нет"; style=bold; weight=1000; ];
+	 node0x503000000160 [shape=Mrecord; style=filled; color="#8FC1E3"; label =  "Ded " ];
+	 node0x5030000001c0 [shape=Mrecord; style=filled; color="#8FC1E3"; label =  "Дед " ];
 }
