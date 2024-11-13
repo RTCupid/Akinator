@@ -32,7 +32,6 @@ void RunAkinatorBase (tree_t* akntr, FILE* base_file, brnch_side_t branch_side)
         NewNode (akntr->text, akntr->crnt_node, branch_side, akntr);
         printf ("New node = <%p>\n", akntr->crnt_node);
 
-
         SkipSlashRN (base_file);
 
         fscanf (base_file, "%c", &symbol);
