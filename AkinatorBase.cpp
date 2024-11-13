@@ -11,13 +11,13 @@ errTr_t MakeAkinatorBase (tree_t* akntr, const char* namefile)
 {
     FILE* base_file = fopen (namefile, "rt");
 
-    RunAkinatorBase (akntr, base_file);
+    RunAkinatorBase (akntr, base_file, LEFT);
 
     fclose (base_file);
     return TREE_OK;
 }
 
-void RunAkinatorBase (tree_t* akntr, FILE* base_file)
+void RunAkinatorBase (tree_t* akntr, FILE* base_file, brnch_side_t branch_side)
 {
     SkipSlashRN (base_file);
     char symbol = '\0';
@@ -29,8 +29,9 @@ void RunAkinatorBase (tree_t* akntr, FILE* base_file)
         fscanf (base_file, "\"%[^\"]\"", akntr->text);
         printf ("text = <%s>\n", akntr->text);
 
-        NewNode (akntr->text, akntr->crnt_node, LEFT, akntr);
+        NewNode (akntr->text, akntr->crnt_node, branch_side, akntr);
         printf ("New node = <%p>\n", akntr->crnt_node);
+
 
         SkipSlashRN (base_file);
 
@@ -46,7 +47,10 @@ void RunAkinatorBase (tree_t* akntr, FILE* base_file)
         else if (symbol == '{')
         {
             ungetc (symbol, base_file);
-            RunAkinatorBase (akntr, base_file);
+            /*......LEFT......*/
+            RunAkinatorBase (akntr, base_file, LEFT);
+            /*......RIGHT.....*/
+            RunAkinatorBase (akntr, base_file, RIGHT);
         }
         else
         {
