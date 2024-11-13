@@ -59,38 +59,6 @@ node_t* RunAkinatorBase (tree_t* akntr, FILE* base_file)
     return NULL;
 }
 
-// void NewNodeInBranch (tree_t* akntr, node_t* crnt_node, brnch_side_t branch_side)
-// {
-//     if (branch_side == LEFT)
-//     {
-//         NewNode (akntr->text, crnt_node, branch_side, akntr);
-//         if (crnt_node)
-//         {
-//             printf ("New node = <%p>\n", crnt_node->left);
-//             crnt_node = crnt_node->left;
-//         }
-//         else
-//         {
-//             crnt_node = akntr->root;
-//             printf ("New Node = <%p>\n", crnt_node);
-//         }
-//     }
-//     if (branch_side == RIGHT)
-//     {
-//         NewNode (akntr->text, crnt_node, branch_side, akntr);
-//         if (crnt_node)
-//         {
-//             printf ("New node = <%p>\n", crnt_node->right);
-//             crnt_node = crnt_node->right;
-//         }
-//         else
-//         {
-//             crnt_node = akntr->root;
-//             printf ("New Node = <%p>\n", crnt_node);
-//         }
-//     }
-// }
-
 void SkipSlashRN (FILE* base_file)
 {
     while (1)

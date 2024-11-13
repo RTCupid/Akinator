@@ -11,39 +11,9 @@ errTr_t AkinatorCtor (tree_t* akntr)
 {
     akntr->log_file = fopen ("log_file.htm", "wt");
 
-    // akntr->root = (node_t*)calloc (1, sizeof (*akntr->root));
-    // if (!akntr->root)
-    // {
-    //     printf ("ERROR: not enough memory\n"
-    //             "calloc of tree->root returned NULL\n");
-    //     return ERROR_CTOR_TREE;
-    // }
-    // akntr->root->text = (char*) calloc (SIZE_TEXT, sizeof (char));
-    // if (!akntr->root->text)
-    // {
-    //     printf ("ERROR: not enough memory\n"
-    //             "calloc of tree->root returned NULL\n");
-    //     return ERROR_CTOR_TREE;
-    // }
-
     akntr->text= (char*) calloc (SIZE_TEXT, sizeof (akntr->text));
 
-    // const char text[SIZE_TEXT] = "Животное";
-    // for (int i = 0; i < SIZE_TEXT; i++)
-    // {
-    //     if (text[i] == '\0' || text[i] == '\n' || text[i] == '\r' || text[i] == '?')
-    //     {
-    //         break;
-    //     }
-    //     akntr->root->text[i] = text[i];
-    // }
-
-//
-//     akntr->root->left  = NULL;
-//     akntr->root->right = NULL;
-//     akntr->root->prnt = NULL;
-//
-     akntr->crnt_node = NULL;
+    akntr->crnt_node = NULL;
 
     return TREE_OK;
 }
