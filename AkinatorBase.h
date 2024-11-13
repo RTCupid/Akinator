@@ -5,4 +5,5 @@
 
     void RunAkinatorBase (tree_t* akntr, FILE* base_file);
 
+    void SkipSlashRN (FILE* base_file);
 #endif
