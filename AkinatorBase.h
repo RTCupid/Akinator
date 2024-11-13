@@ -3,7 +3,7 @@
 
     errTr_t MakeAkinatorBase (tree_t* akntr, const char* namefile);
 
-    void RunAkinatorBase (tree_t* akntr, FILE* base_file, brnch_side_t branch_side);
+    void RunAkinatorBase (tree_t* akntr, FILE* base_file, node_t* crnt_node, brnch_side_t branch_side);
 
     void SkipSlashRN (FILE* base_file);
 #endif

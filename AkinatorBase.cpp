@@ -11,13 +11,13 @@ errTr_t MakeAkinatorBase (tree_t* akntr, const char* namefile)
 {
     FILE* base_file = fopen (namefile, "rt");
 
-    RunAkinatorBase (akntr, base_file, LEFT);
+    RunAkinatorBase (akntr, base_file, akntr->crnt_node, LEFT);
 
     fclose (base_file);
     return TREE_OK;
 }
 
-void RunAkinatorBase (tree_t* akntr, FILE* base_file, brnch_side_t branch_side)
+void RunAkinatorBase (tree_t* akntr, FILE* base_file, node_t* crnt_node, brnch_side_t branch_side)
 {
     SkipSlashRN (base_file);
     char symbol = '\0';
@@ -29,8 +29,18 @@ void RunAkinatorBase (tree_t* akntr, FILE* base_file, brnch_side_t branch_side)
         fscanf (base_file, "\"%[^\"]\"", akntr->text);
         printf ("text = <%s>\n", akntr->text);
 
-        NewNode (akntr->text, akntr->crnt_node, branch_side, akntr);
-        printf ("New node = <%p>\n", akntr->crnt_node);
+        if (branch_side == LEFT)
+        {
+            NewNode (akntr->text, crnt_node, branch_side, akntr);
+            printf ("New node = <%p>\n", crnt_node);
+            crnt_node = crnt_node->left;
+        }
+        if (branch_side == RIGHT)
+        {
+            NewNode (akntr->text, crnt_node, branch_side, akntr);
+            printf ("New node = <%p>\n", crnt_node);
+            crnt_node = crnt_node->right;
+        }
 
         SkipSlashRN (base_file);
 
@@ -47,9 +57,9 @@ void RunAkinatorBase (tree_t* akntr, FILE* base_file, brnch_side_t branch_side)
         {
             ungetc (symbol, base_file);
             /*......LEFT......*/
-            RunAkinatorBase (akntr, base_file, LEFT);
+            RunAkinatorBase (akntr, base_file, crnt_node, LEFT);
             /*......RIGHT.....*/
-            RunAkinatorBase (akntr, base_file, RIGHT);
+            RunAkinatorBase (akntr, base_file, crnt_node, RIGHT);
         }
         else
         {
