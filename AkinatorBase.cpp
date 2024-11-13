@@ -22,32 +22,12 @@ void RunAkinatorBase (tree_t* akntr, FILE* base_file)
     char symbol = '\0';
     fscanf (base_file, "%c", &symbol);
 
-    if (symbol != '{' && symbol != '}')
-    {
-        ungetc (symbol, base_file);
-        fscanf (base_file, "%[^{]", akntr->text);
-    }
-    else
-    {
-        ungetc (symbol, base_file);
-    }
-
-    fscanf (base_file, "%c", &symbol);
-
     if (symbol == '{')
     {
         fscanf (base_file, "\"%[^\"]\"", akntr->text);
         printf ("text = <%s>\n", akntr->text);
-
-        NewNode (akntr->text, akntr->crnt_node, LEFT);
-        akntr->crnt_node = akntr->crnt_node->left;
-        RunAkinatorBase (akntr, base_file);
-
-        NewNode (akntr->text, akntr->crnt_node, RIGHT);
-        akntr->crnt_node = akntr->crnt_node->right;
-        RunAkinatorBase (akntr, base_file);
-
-        //errTr_t NewNode (const char* text, node_t* parrent, brnch_side_t branch_side)
+        NewNode (akntr->text, akntr->crnt_node, LEFT, akntr);
+        printf ("New node = <%p>\n", akntr->crnt_node);
     }
     if (symbol == '}')
     {

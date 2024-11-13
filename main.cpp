@@ -5,6 +5,8 @@
 
 int main ()
 {
+    printf ("#Start Akinator!\n\n");
+
     tree_t akntr = {};
     AkinatorCtor (&akntr);
 
@@ -22,6 +24,7 @@ int main ()
     AkinatorGraphviz (&akntr);
 
     AkinatorDtor (&akntr);
+    printf ("\n#End of programm\n");
     return 0;
 }
 
