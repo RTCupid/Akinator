@@ -30,6 +30,7 @@
         node_t* root;
         node_t* crnt_node;
         FILE* log_file;
+        FILE* dbg_log_file;
         char* base;
         size_t nElemBase;
         char* text;
@@ -45,6 +46,8 @@
 
     void AkinatorGraphviz (tree_t* tree);
 
+    void AkinatorGuessPerson (tree_t* akntr);
+
     void Pause ();
 
     void MakeDotFileDump (tree_t* tree);
@@ -55,7 +58,7 @@
 
    void PrintGraphviz (tree_t tree, node_t* node, FILE* dot_file);
 
-    node_t* NewNode (const char* text, node_t* left, node_t* right);
+    node_t* NewNode (tree_t* akntr, const char* text, node_t* left, node_t* right);
 
     void ClearTree (node_t* node);
 

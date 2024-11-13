@@ -47,6 +47,8 @@ int main ()
 
     AkinatorGraphviz (&akntr);
 
+    AkinatorGuessPerson (&akntr);
+
     AkinatorDtor (&akntr);
     printf ("\n#End of programm\n");
     return 0;

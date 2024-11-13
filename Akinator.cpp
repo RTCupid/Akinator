@@ -11,6 +11,8 @@ errTr_t AkinatorCtor (tree_t* akntr)
 {
     akntr->log_file = fopen ("log_file.htm", "wt");
 
+    akntr->dbg_log_file = fopen ("dbg_log_file.txt", "wt");
+
     akntr->text= (char*) calloc (SIZE_TEXT, sizeof (akntr->text));
 
     akntr->crnt_node = NULL;
@@ -18,7 +20,7 @@ errTr_t AkinatorCtor (tree_t* akntr)
     return TREE_OK;
 }
 
-node_t* NewNode (const char* text, node_t* left = nullptr, node_t* right = nullptr)
+node_t* NewNode (tree_t* akntr, const char* text, node_t* left = nullptr, node_t* right = nullptr)
 {
     node_t* node = (node_t*)calloc (1, sizeof (*node));
     node->text = (char*) calloc (SIZE_TEXT, sizeof (char));
@@ -35,13 +37,15 @@ node_t* NewNode (const char* text, node_t* left = nullptr, node_t* right = nullp
     node->left  = left;
     node->right = right;
 
-    printf ("New node = <%p>\n\n", node);
+    fprintf (akntr->dbg_log_file, "New node = <%p>\n\n", node);
     return node;
 }
 
 void AkinatorDtor (tree_t* akntr)
 {
     fclose (akntr->log_file);
+
+    fclose (akntr->dbg_log_file);
 
     ClearTree (akntr->root);
 

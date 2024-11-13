@@ -13,6 +13,8 @@ errTr_t MakeAkinatorBase (tree_t* akntr, const char* namefile)
 
     akntr->root = RunAkinatorBase (akntr, base_file);
 
+    akntr->crnt_node = akntr->root;
+
     fclose (base_file);
     return TREE_OK;
 }
@@ -22,23 +24,23 @@ node_t* RunAkinatorBase (tree_t* akntr, FILE* base_file)
     SkipSlashRN (base_file);
     char symbol = '\0';
     fscanf (base_file, " %c", &symbol);
-    printf ("start symbol = <%c>\n", symbol);
+    fprintf (akntr->dbg_log_file, "start symbol = <%c>\n", symbol);
 
     if (symbol == '{')
     {
         fscanf (base_file, "\"%[^\"]\"", akntr->text);
-        printf ("text = <%s>\n", akntr->text);
+        fprintf (akntr->dbg_log_file, "text = <%s>\n", akntr->text);
 
-        node_t* node = NewNode (akntr->text, NULL, NULL);
+        node_t* node = NewNode (akntr, akntr->text, NULL, NULL);
 
         SkipSlashRN (base_file);
 
-        fscanf (base_file, "%c", &symbol);
-        printf ("end symbol = <%c>\n", symbol);
+        fscanf (base_file, " %c", &symbol);
+        fprintf (akntr->dbg_log_file, "end symbol = <%c>\n", symbol);
 
         if (symbol == '}')
         {
-            printf ("return\n");
+            fprintf (akntr->dbg_log_file, "return\n");
             return node;
         }
         else if (symbol == '{')
@@ -49,13 +51,19 @@ node_t* RunAkinatorBase (tree_t* akntr, FILE* base_file)
             /*......RIGHT.....*/
             node->right = RunAkinatorBase (akntr, base_file);
         }
+        fscanf (base_file, " %c", &symbol);
+        fprintf (akntr->dbg_log_file, "end symbol = <%c>\n", symbol);
+
+        if (symbol == '}')
+        {
+            return node;
+        }
         else
         {
-            printf ("ERROR: unknown symbol \" not a { or }\"\n");
+            fprintf (akntr->dbg_log_file, "ERROR: unknown symbol \" not a { or }\"\n");
         }
-        return node;
     }
-    printf ("ERROR: uncorrect file of base\n");
+    fprintf (akntr->dbg_log_file, "ERROR: uncorrect file of base\n");
     return NULL;
 }
 

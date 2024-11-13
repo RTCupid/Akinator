@@ -4,6 +4,34 @@
 #include"Akinator.h"
 #include "AkinatorBase.h"
 
+void AkinatorGuessPerson (tree_t* akntr)
+{
+    char answ = '\0';
+
+    if (akntr->crnt_node->left)
+    {
+        printf ("Ваш персонаж %s?\n", akntr->crnt_node->text);
+        printf ("Да\\Нет [y\\n]\n");
+        scanf (" %c", &answ);
+
+        if (answ == 'y')
+        {
+            akntr->crnt_node = akntr->crnt_node->left;
+        }
+        if (answ == 'n')
+        {
+            akntr->crnt_node = akntr->crnt_node->right;
+        }
+        AkinatorGuessPerson (akntr);
+    }
+    else
+    {
+        printf ("Вы загадали %s?\n", akntr->crnt_node->text);
+        printf ("Да\\Нет [y\\n]\n");
+        scanf (" %c", &answ);
+    }
+}
+
 void AkinatorGraphviz (tree_t* akntr)
 {
     fprintf (akntr->log_file, "<FONT SIZE=\"6\"><center>My Akinator:</center><FONT SIZE=\"5\">\n\n");
