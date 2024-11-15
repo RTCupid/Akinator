@@ -64,6 +64,8 @@
 
     void AkinatorGuessPerson (tree_t* akntr);
 
+    bool AkinatorFindDefinition (tree_t* akntr, const char* text, node_t* crnt_node, char** definition);
+
     void AskSaveOrNot (tree_t* akntr, const char* namefile);
 
     void WriteBase (node_t* crnt_node, FILE* base_file, int level);

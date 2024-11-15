@@ -30,7 +30,9 @@ int main ()
             char name_person[SIZE_TEXT] = {};
             scanf (" %s", name_person);
 
-            AkinatorFindDefinition (&akntr, name_person)
+            char** definition = (char**) calloc (deep, sizeof (*Definition));
+
+            AkinatorFindDefinition (&akntr, name_person, akntr->root, definition)
         }
         else if (action == 'c')
         {

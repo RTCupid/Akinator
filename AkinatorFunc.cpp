@@ -6,9 +6,31 @@
 #include"Akinator.h"
 #include "AkinatorBase.h"
 
-void AkinatorFindDefinition (tree_t* akntr, const char* text)
+bool AkinatorFindDefinition (tree_t* akntr, const char* text, node_t* crnt_node, size_t crnt_deep, char** definition, bool person_is_found)
 {
-
+    if (person_is_found)
+    {
+        return;
+    }
+    if (crnt_node->left)
+    {
+        if (AkinatorFindDefinition (akntr, text, crnt_node->left, crnt_deep + 1, definition))
+        {
+            return true;
+        }
+        if (AkinatorFindDefinition (akntr, text, crnt_node->right, crnt_deep + 1, definition))
+        {
+            return true;
+        }
+        return false;
+    }
+    else
+    {
+        if (strcmp (crnt_node->text, text) == 0)
+        {
+            return true
+        }
+    }
 }
 
 void AkinatorGuessPerson (tree_t* akntr)
