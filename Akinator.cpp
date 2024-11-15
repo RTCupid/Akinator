@@ -50,7 +50,7 @@ void AskSaveOrNot (tree_t* akntr, const char* namefile)
     if (action == 'y')
     {
         FILE* base_file = fopen (namefile, "wt");
-        WriteBase (akntr->root, base_file);
+        WriteBase (akntr->root, base_file, 1);
         fclose (base_file);
     }
     else
@@ -59,8 +59,9 @@ void AskSaveOrNot (tree_t* akntr, const char* namefile)
     }
 }
 
-void WriteBase (node_t* crnt_node, FILE* base_file)
+void WriteBase (node_t* crnt_node, FILE* base_file, int level)
 {
+    WriteTab (level);
     fprintf (base_file, "{");
     printf ("{");
     fprintf (base_file, "\"%s\"", crnt_node->text);
@@ -69,14 +70,22 @@ void WriteBase (node_t* crnt_node, FILE* base_file)
     {
         fprintf (base_file, "\n");
         printf ("\n");
-        WriteBase (crnt_node->left , base_file);
-        WriteBase (crnt_node->right, base_file);
+        WriteBase (crnt_node->left , base_file, level + 1);
+        WriteBase (crnt_node->right, base_file, level + 1);
+        WriteTab (level);
     }
     fprintf (base_file, "}\n");
     printf ("}\n");
     return;
 }
 
+void WriteTab (int level)
+{
+    for (int i = 1; i < level; i++)
+    {
+        printf ("\t");
+    }
+}
 
 void AkinatorDtor (tree_t* akntr)
 {
