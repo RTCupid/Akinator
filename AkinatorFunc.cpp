@@ -10,8 +10,12 @@ void AkinatorGuessPerson (tree_t* akntr)
 {
     char answ = '\0';
 
-    if (akntr->crnt_node->left)
+    while (1)
     {
+        if (!akntr->crnt_node->left)
+        {
+            break;
+        }
         printf ("Ваш персонаж %s?\n", akntr->crnt_node->text);
         printf ("Да\\Нет [y\\n]\n");
         scanf (" %c", &answ);
@@ -24,40 +28,38 @@ void AkinatorGuessPerson (tree_t* akntr)
         {
             akntr->crnt_node = akntr->crnt_node->right;
         }
-        AkinatorGuessPerson (akntr);
     }
-    else
+
+    printf ("Вы загадали %s?\n", akntr->crnt_node->text);
+    printf ("Да\\Нет [y\\n]\n");
+    scanf (" %c", &answ);
+    if (answ == 'y')
     {
-        printf ("Вы загадали %s?\n", akntr->crnt_node->text);
-        printf ("Да\\Нет [y\\n]\n");
-        scanf (" %c", &answ);
-        if (answ == 'y')
-        {
-            printf ("Это было легко!\n\n");
-            akntr->crnt_node = akntr->root;
-        }
-        else if (answ == 'n')
-        {
-            printf ("Не может быть, кто это был?\n");
-            char new_node[SIZE_TEXT] = {};
-            scanf (" %s", new_node);
-
-            fprintf (akntr->dbg_log_file, "\nakntr->crnt_node->next = %s\n", akntr->crnt_node->text);
-            fprintf (akntr->dbg_log_file, "new_node = %s\n", new_node);
-
-            fprintf (akntr->dbg_log_file, "old_node = %s\n", akntr->crnt_node->text);
-
-            akntr->crnt_node->right = NewNode (akntr, akntr->crnt_node->text, NULL, NULL);
-            akntr->crnt_node->left  = NewNode (akntr, strdup(new_node), NULL, NULL);
-
-            printf ("Чем %s отличается от %s\n", new_node, akntr->crnt_node->text);
-
-            scanf (" %s", new_node);
-            akntr->crnt_node->text = strdup(new_node);
-
-            fprintf (akntr->dbg_log_file, "new_question = %s\n", akntr->crnt_node->text);
-        }
+        printf ("Это было легко!\n\n");
+        akntr->crnt_node = akntr->root;
     }
+    else if (answ == 'n')
+    {
+        printf ("Не может быть, кто это был?\n");
+        char new_node[SIZE_TEXT] = {};
+        scanf (" %s", new_node);
+
+        fprintf (akntr->dbg_log_file, "\nakntr->crnt_node->next = %s\n", akntr->crnt_node->text);
+        fprintf (akntr->dbg_log_file, "new_node = %s\n", new_node);
+
+        fprintf (akntr->dbg_log_file, "old_node = %s\n", akntr->crnt_node->text);
+
+        akntr->crnt_node->right = NewNode (akntr, akntr->crnt_node->text, NULL, NULL);
+        akntr->crnt_node->left  = NewNode (akntr, strdup(new_node), NULL, NULL);
+
+        printf ("Чем %s отличается от %s\n", new_node, akntr->crnt_node->text);
+
+        scanf (" %s", new_node);
+        akntr->crnt_node->text = strdup(new_node);
+
+        fprintf (akntr->dbg_log_file, "new_question = %s\n", akntr->crnt_node->text);
+    }
+
 }
 
 void AkinatorGraphviz (tree_t* akntr)

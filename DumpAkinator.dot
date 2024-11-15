@@ -1,17 +1,17 @@
 digraph G {
 	rankdir = HR;
 	bgcolor="#F7F9FB"
-	 node0x503000000040 [shape=Mrecord; style=filled; color="#687864"; label =  "Животное? " ];
-	 node0x503000000040 -> node0x5030000000a0 [label="Да"; style=bold; weight=1000; ];
-	 node0x503000000040 -> node0x503000000160 [label="Нет"; style=bold; weight=1000; ];
+	 node0x503000000070 [shape=Mrecord; style=filled; color="#687864"; label =  "Животное? " ];
+	 node0x503000000070 -> node0x5030000000a0 [label="Да"; style=bold; weight=1000; ];
+	 node0x503000000070 -> node0x503000000190 [label="Нет"; style=bold; weight=1000; ];
 	 node0x5030000000a0 [shape=Mrecord; style=filled; color="#5085A5"; label =  "Большая? " ];
 	 node0x5030000000a0 -> node0x5030000000d0 [label="Да"; style=bold; weight=1000; ];
-	 node0x5030000000a0 -> node0x503000000100 [label="Нет"; style=bold; weight=1000; ];
+	 node0x5030000000a0 -> node0x503000000130 [label="Нет"; style=bold; weight=1000; ];
 	 node0x5030000000d0 [shape=Mrecord; style=filled; color="#8FC1E3"; label =  "Лошадь " ];
-	 node0x503000000100 [shape=Mrecord; style=filled; color="#8FC1E3"; label =  "Полторашка " ];
-	 node0x503000000160 [shape=Mrecord; style=filled; color="#5085A5"; label =  "Связан с аниме? " ];
-	 node0x503000000160 -> node0x5030000001c0 [label="Да"; style=bold; weight=1000; ];
-	 node0x503000000160 -> node0x5030000002b0 [label="Нет"; style=bold; weight=1000; ];
+	 node0x503000000130 [shape=Mrecord; style=filled; color="#8FC1E3"; label =  "Полторашка " ];
+	 node0x503000000190 [shape=Mrecord; style=filled; color="#5085A5"; label =  "Связан с аниме? " ];
+	 node0x503000000190 -> node0x5030000001c0 [label="Да"; style=bold; weight=1000; ];
+	 node0x503000000190 -> node0x5030000002b0 [label="Нет"; style=bold; weight=1000; ];
 	 node0x5030000001c0 [shape=Mrecord; style=filled; color="#5085A5"; label =  "Не имеет родителей? " ];
 	 node0x5030000001c0 -> node0x5030000001f0 [label="Да"; style=bold; weight=1000; ];
 	 node0x5030000001c0 -> node0x503000000280 [label="Нет"; style=bold; weight=1000; ];
@@ -25,5 +25,9 @@ digraph G {
 	 node0x5030000002b0 -> node0x5030000002e0 [label="Да"; style=bold; weight=1000; ];
 	 node0x5030000002b0 -> node0x503000000310 [label="Нет"; style=bold; weight=1000; ];
 	 node0x5030000002e0 [shape=Mrecord; style=filled; color="#8FC1E3"; label =  "Дед " ];
-	 node0x503000000310 [shape=Mrecord; style=filled; color="#8FC1E3"; label =  "НК " ];
+	 node0x503000000310 [shape=Mrecord; style=filled; color="#5085A5"; label =  "Человек? " ];
+	 node0x503000000310 -> node0x503000000370 [label="Да"; style=bold; weight=1000; ];
+	 node0x503000000310 -> node0x5030000003a0 [label="Нет"; style=bold; weight=1000; ];
+	 node0x503000000370 [shape=Mrecord; style=filled; color="#8FC1E3"; label =  "Маяковский " ];
+	 node0x5030000003a0 [shape=Mrecord; style=filled; color="#8FC1E3"; label =  "НК " ];
 }

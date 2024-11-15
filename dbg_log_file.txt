@@ -68,20 +68,23 @@ New node = <0x5030000002e0>
 end symbol = <}>
 return
 start symbol = <{>
-text = <НК>
+text = <Человек>
 New node = <0x503000000310>
+
+end symbol = <{>
+start symbol = <{>
+text = <Маяковский>
+New node = <0x503000000370>
+
+end symbol = <}>
+return
+start symbol = <{>
+text = <НК>
+New node = <0x5030000003a0>
 
 end symbol = <}>
 return
 end symbol = <}>
 end symbol = <}>
 end symbol = <}>
-
-akntr->crnt_node->next = НК
-new_node = Маяковский
-old_node = НК
-New node = <0x503000000340>
-
-New node = <0x5030000003a0>
-
-new_question = Человек
+end symbol = <}>
