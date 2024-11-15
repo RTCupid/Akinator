@@ -61,7 +61,7 @@ void AskSaveOrNot (tree_t* akntr, const char* namefile)
 
 void WriteBase (tree_t* akntr, FILE* base_file)
 {
-    fprintf ("{");
+    fprintf (base_file, "{");
 }
 
 
