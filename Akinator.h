@@ -1,6 +1,8 @@
 #ifndef AKINATOR_H
     #define AKINATOR_H
 
+    #define PS if(1)
+
     enum errTr_t
     {
         TREE_OK = 0,

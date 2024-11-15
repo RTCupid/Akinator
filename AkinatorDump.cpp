@@ -3,8 +3,6 @@
 
 #include "Akinator.h"
 
-#define PS if(0)
-
 void AkinatorDump (tree_t* tree)
 {
     tree->log_file = fopen ("log_file.htm", "wt");
