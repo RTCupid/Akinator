@@ -36,7 +36,7 @@
         char* text;
     } tree_t;
 
-    const int SIZE_TEXT = 30;
+    const int SIZE_TEXT = 40;
 
     errTr_t AkinatorCtor (tree_t* tree);
 
@@ -47,8 +47,6 @@
     void AkinatorGraphviz (tree_t* tree);
 
     void AkinatorGuessPerson (tree_t* akntr);
-
-    void ArrayText (char old_node[SIZE_TEXT], char* text);
 
     void Pause ();
 

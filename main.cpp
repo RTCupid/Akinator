@@ -45,9 +45,11 @@ int main ()
         );
     */
 
-    AkinatorGraphviz (&akntr);
+    //AkinatorGraphviz (&akntr);
 
     AkinatorGuessPerson (&akntr);
+
+    AkinatorGraphviz (&akntr);
 
     AkinatorDtor (&akntr);
     printf ("\n#End of programm\n");

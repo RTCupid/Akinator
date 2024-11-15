@@ -40,26 +40,21 @@ void AkinatorGuessPerson (tree_t* akntr)
             printf ("Не может быть, кто это был?\n");
             char new_node[SIZE_TEXT] = {};
             scanf (" %s", new_node);
-            printf ("Чем %s отличается от %s\n", new_node, akntr->crnt_node->text);
-            char new_question[SIZE_TEXT] = {};
-            scanf (" %s", new_question);
 
-            char old_node[SIZE_TEXT] = {};
-            ArrayText (old_node, akntr->crnt_node->text);
+            fprintf (akntr->dbg_log_file, "\nakntr->crnt_node->next = %s\n", akntr->crnt_node->text);
+            fprintf (akntr->dbg_log_file, "new_node = %s\n", new_node);
 
-            akntr->crnt_node = NewNode (akntr, new_question, NULL, NULL);
+            fprintf (akntr->dbg_log_file, "old_node = %s\n", akntr->crnt_node->text);
+
+            akntr->crnt_node->right = NewNode (akntr, akntr->crnt_node->text, NULL, NULL);
             akntr->crnt_node->left  = NewNode (akntr, new_node, NULL, NULL);
-            akntr->crnt_node->right = NewNode (akntr, old_node, NULL, NULL);
-        }
-    }
-}
 
-void ArrayText (char old_node[SIZE_TEXT], char* text)
-{
-    for (int i = 0; i < SIZE_TEXT; i++)
-    {
-        assert (i < SIZE_TEXT);
-        old_node[i] = text[i];
+            printf ("Чем %s отличается от %s\n", new_node, akntr->crnt_node->text);
+
+            scanf (" %s", akntr->crnt_node->text);
+
+            fprintf (akntr->dbg_log_file, "new_question = %s\n", akntr->crnt_node->text);
+        }
     }
 }
 
