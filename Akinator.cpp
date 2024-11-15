@@ -50,7 +50,7 @@ void AskSaveOrNot (tree_t* akntr, const char* namefile)
     if (action == 'y')
     {
         FILE* base_file = fopen (namefile, "wt");
-        WriteBase (akntr, base_file);
+        WriteBase (akntr->root, base_file);
         fclose (base_file);
     }
     else
@@ -59,9 +59,22 @@ void AskSaveOrNot (tree_t* akntr, const char* namefile)
     }
 }
 
-void WriteBase (tree_t* akntr, FILE* base_file)
+void WriteBase (node_t* crnt_node, FILE* base_file)
 {
     fprintf (base_file, "{");
+    printf ("{");
+    fprintf (base_file, "\"%s\"", crnt_node->text);
+    printf ("\"%s\"", crnt_node->text);
+    if (crnt_node->left)
+    {
+        fprintf (base_file, "\n");
+        printf ("\n");
+        WriteBase (crnt_node->left , base_file);
+        WriteBase (crnt_node->right, base_file);
+    }
+    fprintf (base_file, "}\n");
+    printf ("}\n");
+    return;
 }
 
 

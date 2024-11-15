@@ -43,6 +43,7 @@ int main ()
         else
         {
             printf ("ERROR: неизвестное действие\n");
+            break;
         }
 
         printf ("Выберите действие:\n");

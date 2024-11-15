@@ -61,7 +61,7 @@
 
     void AskSaveOrNot (tree_t* akntr, const char* namefile);
 
-    void WriteBase (tree_t* akntr, FILE* base_file);
+    void WriteBase (node_t* crnt_node, FILE* base_file);
 
     void Pause ();
 

@@ -4,51 +4,75 @@ New node = <0x503000000040>
 
 end symbol = <{>
 start symbol = <{>
-text = <Полторашка>
+text = <Большая>
 New node = <0x503000000070>
+
+end symbol = <{>
+start symbol = <{>
+text = <Лошадь>
+New node = <0x5030000000a0>
 
 end symbol = <}>
 return
 start symbol = <{>
-text = <Связан с аниме>
-New node = <0x5030000000a0>
-
-end symbol = <{>
-start symbol = <{>
-text = <Не имеет родителей>
+text = <Полторашка>
 New node = <0x5030000000d0>
 
-end symbol = <{>
+end symbol = <}>
+return
+end symbol = <}>
 start symbol = <{>
-text = <С рыжими волосами>
+text = <Связан с аниме>
 New node = <0x503000000100>
 
 end symbol = <{>
 start symbol = <{>
-text = <Наруто>
+text = <Не имеет родителей>
 New node = <0x503000000130>
+
+end symbol = <{>
+start symbol = <{>
+text = <С рыжими волосами>
+New node = <0x503000000160>
+
+end symbol = <{>
+start symbol = <{>
+text = <Наруто>
+New node = <0x503000000190>
 
 end symbol = <}>
 return
 start symbol = <{>
 text = <Какаши>
-New node = <0x503000000160>
+New node = <0x5030000001c0>
 
 end symbol = <}>
 return
 end symbol = <}>
 start symbol = <{>
 text = <Кирито>
-New node = <0x503000000190>
+New node = <0x5030000001f0>
 
 end symbol = <}>
 return
 end symbol = <}>
 start symbol = <{>
-text = <НК>
-New node = <0x5030000001c0>
+text = <Андроид>
+New node = <0x503000000220>
+
+end symbol = <{>
+start symbol = <{>
+text = <Дед>
+New node = <0x503000000250>
 
 end symbol = <}>
 return
+start symbol = <{>
+text = <НК>
+New node = <0x503000000280>
+
+end symbol = <}>
+return
+end symbol = <}>
 end symbol = <}>
 end symbol = <}>
