@@ -39,6 +39,30 @@ node_t* NewNode (tree_t* akntr, const char* text, node_t* left = nullptr, node_t
     return node;
 }
 
+void AskSaveOrNot (tree_t* akntr)
+{
+    printf ("Сохранить базу?\n");
+    printf ("Да\\нет [y\\n]\n");
+
+    char action = 0;
+    scanf (" %c", &action);
+
+    if (action == 'y')
+    {
+        SaveBase (akntr);
+    }
+    else
+    {
+        return;
+    }
+}
+
+void SaveBase (tree_t* akntr)
+{
+
+}
+
+
 void AkinatorDtor (tree_t* akntr)
 {
     fclose (akntr->dbg_log_file);

@@ -59,6 +59,10 @@
 
     void AkinatorGuessPerson (tree_t* akntr);
 
+    void AskSaveOrNot (tree_t* akntr);
+
+    void SaveBase (tree_t* akntr);
+
     void Pause ();
 
     void MakeDotFileDump (tree_t* tree);

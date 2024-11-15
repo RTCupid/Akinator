@@ -122,3 +122,4 @@ void PrintGraphviz (tree_t akntr, node_t* node, FILE* dot_file)
     /*......RIGHT......*/
     PrintGraphviz (akntr, node->right, dot_file);
 }
+

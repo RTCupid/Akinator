@@ -37,6 +37,7 @@ int main ()
         }
         else if (action == 'e')
         {
+            AskSaveOrNot (&akntr);
             break;
         }
         else
@@ -48,8 +49,6 @@ int main ()
         printf ("[отгадать персонажа] [получить определение] [сравнить персонажей] [показать дерево] [выйти]\n");
         printf ("Enter: [q]                     [d]                    [c]                 [t]         [e]  \n");
     }
-
-    AkinatorGraphviz (&akntr);
 
     AkinatorDtor (&akntr);
     printf ("\n#End of programm\n");
