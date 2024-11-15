@@ -37,7 +37,7 @@ int main ()
         }
         else if (action == 'e')
         {
-            AskSaveOrNot (&akntr);
+            AskSaveOrNot (&akntr, "AkinatorBase.txt");
             break;
         }
         else

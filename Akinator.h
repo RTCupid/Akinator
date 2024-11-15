@@ -59,9 +59,9 @@
 
     void AkinatorGuessPerson (tree_t* akntr);
 
-    void AskSaveOrNot (tree_t* akntr);
+    void AskSaveOrNot (tree_t* akntr, const char* namefile);
 
-    void SaveBase (tree_t* akntr);
+    void WriteBase (tree_t* akntr, FILE* base_file);
 
     void Pause ();
 

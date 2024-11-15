@@ -39,7 +39,7 @@ node_t* NewNode (tree_t* akntr, const char* text, node_t* left = nullptr, node_t
     return node;
 }
 
-void AskSaveOrNot (tree_t* akntr)
+void AskSaveOrNot (tree_t* akntr, const char* namefile)
 {
     printf ("Сохранить базу?\n");
     printf ("Да\\нет [y\\n]\n");
@@ -49,7 +49,9 @@ void AskSaveOrNot (tree_t* akntr)
 
     if (action == 'y')
     {
-        SaveBase (akntr);
+        FILE* base_file = fopen (namefile, "wt");
+        WriteBase (akntr, base_file);
+        fclose (base_file);
     }
     else
     {
@@ -57,9 +59,9 @@ void AskSaveOrNot (tree_t* akntr)
     }
 }
 
-void SaveBase (tree_t* akntr)
+void WriteBase (tree_t* akntr, FILE* base_file)
 {
-
+    fprintf ("{");
 }
 
 
