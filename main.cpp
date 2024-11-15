@@ -45,7 +45,7 @@ int main ()
         );
     */
 
-    //AkinatorGraphviz (&akntr);
+    AkinatorGraphviz (&akntr);
 
     AkinatorGuessPerson (&akntr);
 
