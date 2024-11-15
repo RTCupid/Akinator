@@ -45,6 +45,7 @@
         char* base;
         size_t nElemBase;
         char* text;
+        size_t deep;
     } tree_t;
 
     const int SIZE_TEXT = 50;
@@ -52,6 +53,8 @@
     errTr_t AkinatorCtor (tree_t* tree);
 
     void VerifyOpenFile (FILE* file, const char* namefunc);
+
+    size_t FindDeepTree (tree_t* akntr, node_t* root, size_t deep);
 
     void AkinatorDtor (tree_t* tree);
 

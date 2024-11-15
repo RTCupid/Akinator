@@ -5,6 +5,7 @@
 #include <sys/stat.h>
 #include <errno.h>
 #include <assert.h>
+#include <algorithm>
 
 #include "Akinator.h"
 #include "AkinatorBase.h"
@@ -97,6 +98,19 @@ void AkinatorDtor (tree_t* akntr)
     akntr->text = NULL;
 
     akntr->crnt_node = NULL;
+}
+
+size_t FindDeepTree (tree_t* akntr, node_t* root, size_t deep)
+{
+    if (!root->left)
+    {
+        return deep;
+    }
+    size_t deep_left = FindDeepTree (akntr, root->left, deep + 1);
+
+    size_t deep_right = FindDeepTree (akntr, root->right, deep + 1);
+
+    return (std::max) (deep_left, deep_right);
 }
 
 void ClearTree (node_t* node)

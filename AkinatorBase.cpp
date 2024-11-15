@@ -17,6 +17,9 @@ errTr_t MakeAkinatorBase (tree_t* akntr, const char* namefile)
 
     akntr->crnt_node = akntr->root;
 
+    akntr->deep = FindDeepTree (akntr, akntr->root, 1);
+    fprintf (akntr->dbg_log_file, "deep of tree = <%lu>\n", akntr->deep);
+
     fclose (base_file);
     return TREE_OK;
 }

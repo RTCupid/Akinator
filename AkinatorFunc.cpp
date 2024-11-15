@@ -57,6 +57,9 @@ void AkinatorGuessPerson (tree_t* akntr)
         scanf (" %s", new_node);
         akntr->crnt_node->text = strdup(new_node);
 
+        akntr->deep = FindDeepTree (akntr, akntr->root, 1);
+
+        fprintf (akntr->dbg_log_file, "deep of tree = <%lu>\n", akntr->deep);
         fprintf (akntr->dbg_log_file, "new_question = %s\n", akntr->crnt_node->text);
     }
 
