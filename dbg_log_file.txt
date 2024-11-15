@@ -1,6 +1,6 @@
 start symbol = <{>
 text = <Животное>
-New node = <0x503000000040>
+New node = <0x503000000070>
 
 end symbol = <{>
 start symbol = <{>
@@ -16,14 +16,14 @@ end symbol = <}>
 return
 start symbol = <{>
 text = <Полторашка>
-New node = <0x503000000100>
+New node = <0x503000000130>
 
 end symbol = <}>
 return
 end symbol = <}>
 start symbol = <{>
 text = <Связан с аниме>
-New node = <0x503000000160>
+New node = <0x503000000190>
 
 end symbol = <{>
 start symbol = <{>
@@ -76,3 +76,12 @@ return
 end symbol = <}>
 end symbol = <}>
 end symbol = <}>
+
+akntr->crnt_node->next = НК
+new_node = Маяковский
+old_node = НК
+New node = <0x503000000340>
+
+New node = <0x5030000003a0>
+
+new_question = Человек

@@ -25,7 +25,7 @@ node_t* NewNode (tree_t* akntr, const char* text, node_t* left = nullptr, node_t
 {
     node_t* node = (node_t*)calloc (1, sizeof (*node));
 
-    node->text = strdup (text);
+    node->text = text;
 
     node->left  = left;
     node->right = right;
@@ -48,6 +48,7 @@ void AskSaveOrNot (tree_t* akntr, const char* namefile)
         VerifyOpenFile (base_file, "AskSaveOrNot");
 
         WriteBase (akntr->root, base_file, 1);
+        WriteBase (akntr->root, stdout, 1);
         fclose (base_file);
     }
     else
@@ -56,31 +57,30 @@ void AskSaveOrNot (tree_t* akntr, const char* namefile)
     }
 }
 
-void WriteBase (node_t* crnt_node, FILE* base_file, int level)
+void WriteBase (node_t* crnt_node, FILE* file, int level)
 {
-    WriteTab (level);
-    fprintf (base_file, "{");
-    printf ("{");
-    fprintf (base_file, "\"%s\"", crnt_node->text);
-    printf ("\"%s\"", crnt_node->text);
+    WriteTab (level, file);
+    fprintf (file, "{");
+    fprintf (file, "\"%s\"", crnt_node->text);
+
     if (crnt_node->left)
     {
-        fprintf (base_file, "\n");
-        printf ("\n");
-        WriteBase (crnt_node->left , base_file, level + 1);
-        WriteBase (crnt_node->right, base_file, level + 1);
-        WriteTab (level);
+        fprintf (file, "\n");
+
+        WriteBase (crnt_node->left , file, level + 1);
+        WriteBase (crnt_node->right, file, level + 1);
+        WriteTab (level, file);
     }
-    fprintf (base_file, "}\n");
-    printf ("}\n");
+    fprintf (file, "}\n");
     return;
 }
 
-void WriteTab (int level)
+void WriteTab (int level, FILE* file)
 {
     for (int i = 1; i < level; i++)
     {
-        printf ("\t");
+        assert (i < level);
+        fprintf (file, "\t");
     }
 }
 
@@ -114,7 +114,7 @@ void ClearTree (node_t* node)
         ClearTree (node->right);
     }
 
-    free (node->text);
+    free (const_cast<char*>(node->text)); // node->text is always owning heap pointer;
     node->text = NULL;
 
     free (node);

@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
+#include <string.h>
 
 #include"Akinator.h"
 #include "AkinatorBase.h"
@@ -47,11 +48,12 @@ void AkinatorGuessPerson (tree_t* akntr)
             fprintf (akntr->dbg_log_file, "old_node = %s\n", akntr->crnt_node->text);
 
             akntr->crnt_node->right = NewNode (akntr, akntr->crnt_node->text, NULL, NULL);
-            akntr->crnt_node->left  = NewNode (akntr, new_node, NULL, NULL);
+            akntr->crnt_node->left  = NewNode (akntr, strdup(new_node), NULL, NULL);
 
             printf ("Чем %s отличается от %s\n", new_node, akntr->crnt_node->text);
 
-            scanf (" %s", akntr->crnt_node->text);
+            scanf (" %s", new_node);
+            akntr->crnt_node->text = strdup(new_node);
 
             fprintf (akntr->dbg_log_file, "new_question = %s\n", akntr->crnt_node->text);
         }

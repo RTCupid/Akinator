@@ -30,7 +30,7 @@
 
     typedef struct node_t
     {
-        char* text;
+        const char* text;
         node_t* left;
         node_t* right;
         node_t* prnt;
@@ -47,7 +47,7 @@
         char* text;
     } tree_t;
 
-    const int SIZE_TEXT = 40;
+    const int SIZE_TEXT = 50;
 
     errTr_t AkinatorCtor (tree_t* tree);
 
@@ -65,7 +65,7 @@
 
     void WriteBase (node_t* crnt_node, FILE* base_file, int level);
 
-    void WriteTab (int level);
+    void WriteTab (int level, FILE* file);
 
     void Pause ();
 

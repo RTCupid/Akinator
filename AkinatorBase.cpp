@@ -3,6 +3,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <errno.h>
+#include <string.h>
 
 #include "Akinator.h"
 #include "AkinatorBase.h"
@@ -31,7 +32,7 @@ node_t* RunAkinatorBase (tree_t* akntr, FILE* base_file)
         fscanf (base_file, "\"%[^\"]\"", akntr->text);
         fprintf (akntr->dbg_log_file, "text = <%s>\n", akntr->text);
 
-        node_t* node = NewNode (akntr, akntr->text, NULL, NULL);
+        node_t* node = NewNode (akntr, strdup(akntr->text), NULL, NULL);
 
         fscanf (base_file, " %c", &symbol);
         fprintf (akntr->dbg_log_file, "end symbol = <%c>\n", symbol);
