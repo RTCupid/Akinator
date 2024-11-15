@@ -52,12 +52,3 @@ end symbol = <}>
 return
 end symbol = <}>
 end symbol = <}>
-
-akntr->crnt_node->next = Полторашка
-new_node = y
-old_node = Полторашка
-New node = <0x5030000001f0>
-
-New node = <0x503000000220>
-
-new_question = n

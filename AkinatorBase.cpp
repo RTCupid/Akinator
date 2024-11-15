@@ -21,7 +21,6 @@ errTr_t MakeAkinatorBase (tree_t* akntr, const char* namefile)
 
 node_t* RunAkinatorBase (tree_t* akntr, FILE* base_file)
 {
-    SkipSlashRN (base_file);
     char symbol = '\0';
     fscanf (base_file, " %c", &symbol);
     fprintf (akntr->dbg_log_file, "start symbol = <%c>\n", symbol);
@@ -32,8 +31,6 @@ node_t* RunAkinatorBase (tree_t* akntr, FILE* base_file)
         fprintf (akntr->dbg_log_file, "text = <%s>\n", akntr->text);
 
         node_t* node = NewNode (akntr, akntr->text, NULL, NULL);
-
-        SkipSlashRN (base_file);
 
         fscanf (base_file, " %c", &symbol);
         fprintf (akntr->dbg_log_file, "end symbol = <%c>\n", symbol);
@@ -65,17 +62,4 @@ node_t* RunAkinatorBase (tree_t* akntr, FILE* base_file)
     }
     fprintf (akntr->dbg_log_file, "ERROR: uncorrect file of base\n");
     return NULL;
-}
-
-void SkipSlashRN (FILE* base_file)
-{
-    while (1)
-    {
-        int ch = fgetc (base_file);
-        if (ch == '{' || ch == '}')
-        {
-            ungetc (ch, base_file);
-            break;
-        }
-    }
 }
