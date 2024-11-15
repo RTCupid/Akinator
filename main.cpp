@@ -9,45 +9,45 @@ int main ()
 
     tree_t akntr = {};
     AkinatorCtor (&akntr);
-
     MakeAkinatorBase (&akntr, "AkinatorBase.txt");
 
-    /*NewNode ("Полторашка", akntr.root, LEFT);
-    NewNode ("Ведёт дискру", akntr.root, RIGHT);
-    NewNode ("Бурцев", akntr.root->right, LEFT);
-    NewNode ("Ведёт физос", akntr.root->right, RIGHT);
-    NewNode ("Нефор", akntr.root->right->right, LEFT);
-    NewNode ("Колдунов", akntr.root->right->right->left, LEFT);
-    NewNode ("Овчос", akntr.root->right->right->left, RIGHT);
-    NewNode ("Чубаров", akntr.root->right->right, RIGHT);*/
-#if 0
-    node_t* NewNode(const char* text, node_t* left = nullptr, node_t* right = nullptr)
+    printf ("Выберите режим игры:\n");
+    printf ("[отгадать персонажа] [получить определение] [сравнить персонажей] [показать дерево]\n");
+    printf ("Enter: [q]                     [d]                    [c]                 [t]      \n");
+
+    while (1)
     {
-        node_t* node = (node_t*)calloc(1, sizeof(node_t));
-        node->text = text;
-        node->left = left;
-        node->right = right;
-        return node;
+        char action = 0;
+        scanf (" %c", &action);
+
+        if (action == 'q')
+        {
+            AkinatorGuessPerson (&akntr);
+        }
+        else if (action == 'd')
+        {
+        }
+        else if (action == 'c')
+        {
+        }
+        else if (action == 't')
+        {
+            printf ("Посмотрите дерево\n\n");
+            AkinatorGraphviz (&akntr);
+        }
+        else if (action == 'e')
+        {
+            break;
+        }
+        else
+        {
+            printf ("ERROR: неизвестное действие\n");
+        }
+
+        printf ("Выберите действие:\n");
+        printf ("[отгадать персонажа] [получить определение] [сравнить персонажей] [показать дерево] [выйти]\n");
+        printf ("Enter: [q]                     [d]                    [c]                 [t]         [e]  \n");
     }
-#endif
-    /*
-    NewNode("Бурцев")
-    NewNode("Бурцев")
-    NewNode("Бурцев")
-    NewNode
-        ( "Полторашка"
-        , NewNode
-            ( "Ведёт дискру"
-                , NewNode("Бурцев")
-                , NewNode("Колдунов")
-            )
-        , NewNode("Чубаров")
-        );
-    */
-
-    AkinatorGraphviz (&akntr);
-
-    AkinatorGuessPerson (&akntr);
 
     AkinatorGraphviz (&akntr);
 
@@ -56,3 +56,14 @@ int main ()
     return 0;
 }
 
+
+/*NewNode
+    ( "Полторашка"
+    , NewNode
+        ( "Ведёт дискру"
+            , NewNode("Бурцев")
+            , NewNode("Колдунов")
+        )
+    , NewNode("Чубаров")
+    );
+*/

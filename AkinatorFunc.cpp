@@ -32,7 +32,7 @@ void AkinatorGuessPerson (tree_t* akntr)
         scanf (" %c", &answ);
         if (answ == 'y')
         {
-            printf ("Это было легко!\n");
+            printf ("Это было легко!\n\n");
             akntr->crnt_node = akntr->root;
         }
         else if (answ == 'n')

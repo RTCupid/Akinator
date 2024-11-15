@@ -19,6 +19,15 @@
         LEFT  = 1,
     };
 
+    enum action_t
+    {
+        QUESS = (int)'q',
+        DEFINITION = (int)'d',
+        COMPARE = (int)'c',
+        TREE = (int)'t',
+        EXIT = (int)'e',
+    };
+
     typedef struct node_t
     {
         char* text;
