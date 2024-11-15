@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <errno.h>
@@ -21,16 +22,8 @@ errTr_t AkinatorCtor (tree_t* akntr)
 node_t* NewNode (tree_t* akntr, const char* text, node_t* left = nullptr, node_t* right = nullptr)
 {
     node_t* node = (node_t*)calloc (1, sizeof (*node));
-    node->text = (char*) calloc (SIZE_TEXT, sizeof (char));
 
-    for (int i = 0; i < SIZE_TEXT; i++)
-    {
-        if (text[i] == '\0' || text[i] == '\n' || text[i] == '\r' || text[i] == '?')
-        {
-            break;
-        }
-        node->text[i] = text[i];
-    }
+    node->text = strdup (text);
 
     node->left  = left;
     node->right = right;

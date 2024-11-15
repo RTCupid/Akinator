@@ -5,74 +5,83 @@ New node = <0x503000000040>
 end symbol = <{>
 start symbol = <{>
 text = <Большая>
-New node = <0x503000000070>
+New node = <0x5030000000a0>
 
 end symbol = <{>
 start symbol = <{>
 text = <Лошадь>
-New node = <0x5030000000a0>
+New node = <0x5030000000d0>
 
 end symbol = <}>
 return
 start symbol = <{>
 text = <Полторашка>
-New node = <0x5030000000d0>
+New node = <0x503000000100>
 
 end symbol = <}>
 return
 end symbol = <}>
 start symbol = <{>
 text = <Связан с аниме>
-New node = <0x503000000100>
-
-end symbol = <{>
-start symbol = <{>
-text = <Не имеет родителей>
-New node = <0x503000000130>
-
-end symbol = <{>
-start symbol = <{>
-text = <С рыжими волосами>
 New node = <0x503000000160>
 
 end symbol = <{>
 start symbol = <{>
+text = <Не имеет родителей>
+New node = <0x5030000001c0>
+
+end symbol = <{>
+start symbol = <{>
+text = <С рыжими волосами>
+New node = <0x5030000001f0>
+
+end symbol = <{>
+start symbol = <{>
 text = <Наруто>
-New node = <0x503000000190>
+New node = <0x503000000220>
 
 end symbol = <}>
 return
 start symbol = <{>
 text = <Какаши>
-New node = <0x5030000001c0>
+New node = <0x503000000250>
 
 end symbol = <}>
 return
 end symbol = <}>
 start symbol = <{>
 text = <Кирито>
-New node = <0x5030000001f0>
+New node = <0x503000000280>
 
 end symbol = <}>
 return
 end symbol = <}>
 start symbol = <{>
 text = <Андроид>
-New node = <0x503000000220>
+New node = <0x5030000002b0>
 
 end symbol = <{>
 start symbol = <{>
 text = <Дед>
-New node = <0x503000000250>
+New node = <0x5030000002e0>
 
 end symbol = <}>
 return
 start symbol = <{>
 text = <НК>
-New node = <0x503000000280>
+New node = <0x503000000310>
 
 end symbol = <}>
 return
 end symbol = <}>
 end symbol = <}>
 end symbol = <}>
+
+akntr->crnt_node->next = Полторашка
+new_node = ttttttttttttttttt
+old_node = Полторашка
+New node = <0x503000000340>
+
+New node = <0x5030000003a0>
+
+new_question = tttttttttt
