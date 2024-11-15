@@ -6,6 +6,11 @@
 #include"Akinator.h"
 #include "AkinatorBase.h"
 
+void AkinatorFindDefinition (tree_t* akntr, const char* text)
+{
+
+}
+
 void AkinatorGuessPerson (tree_t* akntr)
 {
     char answ = '\0';

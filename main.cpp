@@ -27,6 +27,10 @@ int main ()
         }
         else if (action == 'd')
         {
+            char name_person[SIZE_TEXT] = {};
+            scanf (" %s", name_person);
+
+            AkinatorFindDefinition (&akntr, name_person)
         }
         else if (action == 'c')
         {
