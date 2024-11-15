@@ -10,6 +10,7 @@
 errTr_t MakeAkinatorBase (tree_t* akntr, const char* namefile)
 {
     FILE* base_file = fopen (namefile, "rt");
+    VerifyOpenFile (base_file, "MakeAkinatorBase");
 
     akntr->root = RunAkinatorBase (akntr, base_file);
 

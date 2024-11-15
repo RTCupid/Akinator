@@ -61,6 +61,7 @@ void AkinatorGuessPerson (tree_t* akntr)
 void AkinatorGraphviz (tree_t* akntr)
 {
     akntr->log_file = fopen ("log_file.htm", "wt");
+    VerifyOpenFile (akntr->log_file, "AkinatorGraphviz");
 
     fprintf (akntr->log_file, "<FONT SIZE=\"6\"><center>My Akinator:</center><FONT SIZE=\"5\">\n\n");
 
@@ -76,6 +77,7 @@ void AkinatorGraphviz (tree_t* akntr)
 void MakeDotFileGraphviz (tree_t* akntr)
 {
     FILE* dot_file = fopen ("DumpAkinator.dot", "wt");
+    VerifyOpenFile (dot_file, "MakeDotFileGraphviz");
 
     fprintf (dot_file, "digraph G {\n");
     fprintf (dot_file, "\trankdir = HR;\n");

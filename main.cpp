@@ -9,6 +9,7 @@ int main ()
 
     tree_t akntr = {};
     AkinatorCtor (&akntr);
+
     MakeAkinatorBase (&akntr, "AkinatorBase.txt");
 
     printf ("Выберите режим игры:\n");

@@ -51,6 +51,8 @@
 
     errTr_t AkinatorCtor (tree_t* tree);
 
+    void VerifyOpenFile (FILE* file, const char* namefunc);
+
     void AkinatorDtor (tree_t* tree);
 
     void AkinatorDump (tree_t* tree);

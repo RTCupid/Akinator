@@ -4,6 +4,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <errno.h>
+#include <assert.h>
 
 #include "Akinator.h"
 #include "AkinatorBase.h"
@@ -11,6 +12,7 @@
 errTr_t AkinatorCtor (tree_t* akntr)
 {
     akntr->dbg_log_file = fopen ("dbg_log_file.txt", "wt");
+    VerifyOpenFile (akntr->dbg_log_file, "AkinatorCtor");
 
     akntr->text= (char*) calloc (SIZE_TEXT, sizeof (akntr->text));
 
@@ -43,6 +45,8 @@ void AskSaveOrNot (tree_t* akntr, const char* namefile)
     if (action == 'y')
     {
         FILE* base_file = fopen (namefile, "wt");
+        VerifyOpenFile (base_file, "AskSaveOrNot");
+
         WriteBase (akntr->root, base_file, 1);
         fclose (base_file);
     }
@@ -115,4 +119,13 @@ void ClearTree (node_t* node)
 
     free (node);
     node = NULL;
+}
+
+void VerifyOpenFile (FILE* file, const char* namefunc)
+{
+    if (file == NULL)
+    {
+        printf ("ERROR: in func: %s fopen returned nullptr\n", namefunc);
+        assert (0);
+    }
 }
