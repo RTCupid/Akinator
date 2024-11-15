@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <assert.h>
 
 #include"Akinator.h"
 #include "AkinatorBase.h"
@@ -29,6 +30,36 @@ void AkinatorGuessPerson (tree_t* akntr)
         printf ("Вы загадали %s?\n", akntr->crnt_node->text);
         printf ("Да\\Нет [y\\n]\n");
         scanf (" %c", &answ);
+        if (answ == 'y')
+        {
+            printf ("Это было легко!\n");
+            akntr->crnt_node = akntr->root;
+        }
+        else if (answ == 'n')
+        {
+            printf ("Не может быть, кто это был?\n");
+            char new_node[SIZE_TEXT] = {};
+            scanf (" %s", new_node);
+            printf ("Чем %s отличается от %s\n", new_node, akntr->crnt_node->text);
+            char new_question[SIZE_TEXT] = {};
+            scanf (" %s", new_question);
+
+            char old_node[SIZE_TEXT] = {};
+            ArrayText (old_node, akntr->crnt_node->text);
+
+            akntr->crnt_node = NewNode (akntr, new_question, NULL, NULL);
+            akntr->crnt_node->left  = NewNode (akntr, new_node, NULL, NULL);
+            akntr->crnt_node->right = NewNode (akntr, old_node, NULL, NULL);
+        }
+    }
+}
+
+void ArrayText (char old_node[SIZE_TEXT], char* text)
+{
+    for (int i = 0; i < SIZE_TEXT; i++)
+    {
+        assert (i < SIZE_TEXT);
+        old_node[i] = text[i];
     }
 }
 

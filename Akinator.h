@@ -48,6 +48,8 @@
 
     void AkinatorGuessPerson (tree_t* akntr);
 
+    void ArrayText (char old_node[SIZE_TEXT], char* text);
+
     void Pause ();
 
     void MakeDotFileDump (tree_t* tree);
