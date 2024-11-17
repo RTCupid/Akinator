@@ -32,7 +32,7 @@ bool AkinatorFindDefinition (tree_t* akntr, const char* text, node_t* crnt_node,
 
 void PrintDef (int* definition, size_t crnt_deep)
 {
-    printf ("%s ",
+    printf ("%s ", );
 }
 
 void AkinatorGuessPerson (tree_t* akntr)
