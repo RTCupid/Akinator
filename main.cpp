@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 #include "Akinator.h"
 #include "AkinatorBase.h"
@@ -28,11 +29,23 @@ int main ()
         else if (action == 'd')
         {
             char name_person[SIZE_TEXT] = {};
+            printf ("Enter name of person:\n");
             scanf (" %s", name_person);
 
-            char** definition = (char**) calloc (deep, sizeof (*Definition));
+            int* definition = (int*) calloc (akntr.deep, sizeof (*definition));
 
-            AkinatorFindDefinition (&akntr, name_person, akntr->root, definition)
+            if (AkinatorFindDefinition (&akntr, name_person, akntr.root, 0, definition))
+            {
+                printf ("Person is found\n");
+                printf ("%s ", name_person);
+                PrintDef (definition, 0);
+            }
+            else
+            {
+                printf ("The Person is not in the database\n");
+            }
+            free (definition);
+            definition = NULL;
         }
         else if (action == 'c')
         {
