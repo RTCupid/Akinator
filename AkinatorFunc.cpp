@@ -27,7 +27,9 @@ void RunCompare (tree_t* akntr)
         printf ("The second Person is not in the database\n");
     }
 
-    PrintCompareDef (name_first_person, name_second_person, first_definition, second_definition, akntr);
+    if (first_definition[0] == second_definition[0])
+        printf ("%s похож на %s тем, что он: \n", name_first_person, name_second_person);
+    PrintCompareDef (name_first_person, name_second_person, first_definition, second_definition, akntr, akntr->root, 0);
 
     free (first_definition);
     first_definition = NULL;
@@ -35,18 +37,29 @@ void RunCompare (tree_t* akntr)
     second_definition = NULL;
 }
 
-void PrintCompareDef (char name_first_person[SIZE_TEXT], char name_second_person[SIZE_TEXT], int* first_definition, int* second_definition, tree_t* akntr)
+void PrintCompareDef (char name_first_person[SIZE_TEXT], char name_second_person[SIZE_TEXT], int* first_definition, int* second_definition, tree_t* akntr, node_t* crnt_node, int crnt_deep)
 {
-    int i = 0;
-    if (first_definition[i] == second_definition[i])
-        printf ("%s похож на %s тем, что они: \n", name_first_person, name_second_person);
-
-    while (first_definition[i] == second_definition[i])
+    if (first_definition[crnt_deep] == second_definition[crnt_deep])
     {
-        printf ("%s", akntr->crnt_node->text);
-        i++;
-        if (
+        if (second_definition[crnt_deep])
+        {
+            printf ("%s ",crnt_node->text);
+            crnt_node = crnt_node->left;
+        }
+        else
+        {
+            printf ("Не %s ",crnt_node->text);
+            crnt_node = crnt_node->right;
+        }
+
+        PrintCompareDef (name_first_person, name_second_person, first_definition, second_definition, akntr, crnt_node, crnt_deep + 1);
+        return;
     }
+    printf ("\nОтличаются тем, что %s: ", name_first_person);
+    PrintDef (first_definition,  crnt_deep, crnt_node);
+    printf ("\n%s: ", name_second_person);
+    PrintDef (second_definition, crnt_deep, crnt_node);
+    return;
 }
 
 void RunDefinition (tree_t* akntr)
@@ -96,7 +109,7 @@ bool AkinatorFindDefinition (tree_t* akntr, const char* text, node_t* crnt_node,
     return false;
 }
 
-void PrintDef (int* definition, size_t crnt_deep, node_t* crnt_node)
+void PrintDef (int* definition, int crnt_deep, node_t* crnt_node)
 {
     if (!crnt_node->left)
         return;

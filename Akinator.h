@@ -66,11 +66,13 @@
 
     void RunCompare (tree_t* akntr);
 
+    void PrintCompareDef (char name_first_person[SIZE_TEXT], char name_second_person[SIZE_TEXT], int* first_definition, int* second_definition, tree_t* akntr, node_t* crnt_node, int crnt_deep);
+
     void RunDefinition (tree_t* akntr);
 
     bool AkinatorFindDefinition (tree_t* akntr, const char* text, node_t* crnt_node, size_t crnt_deep, int* definition);
 
-    void PrintDef (int* definition, size_t crnt_deep, node_t* crnt_node);
+    void PrintDef (int* definition, int crnt_deep, node_t* crnt_node);
 
     void AskSaveOrNot (tree_t* akntr, const char* namefile);
 
