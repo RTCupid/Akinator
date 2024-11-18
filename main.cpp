@@ -28,31 +28,15 @@ int main ()
         }
         else if (action == 'd')
         {
-            char name_person[SIZE_TEXT] = {};
-            printf ("Enter name of person:\n");
-            scanf (" %s", name_person);
-
-            int* definition = (int*) calloc (akntr.deep, sizeof (*definition));
-
-            if (AkinatorFindDefinition (&akntr, name_person, akntr.root, 0, definition))
-            {
-                printf ("Person is found\n");
-                printf ("%s ", name_person);
-                PrintDef (definition, 0);
-            }
-            else
-            {
-                printf ("The Person is not in the database\n");
-            }
-            free (definition);
-            definition = NULL;
+           RunDefinition (&akntr);
         }
         else if (action == 'c')
         {
+            RunCompare (&akntr);
         }
         else if (action == 't')
         {
-            printf ("Посмотрите дерево\n\n");
+            printf ("Посмотрите дерево\n");
             AkinatorGraphviz (&akntr);
         }
         else if (action == 'e')
@@ -66,7 +50,7 @@ int main ()
             break;
         }
 
-        printf ("Выберите действие:\n");
+        printf ("\n\nВыберите действие:\n");
         printf ("[отгадать персонажа] [получить определение] [сравнить персонажей] [показать дерево] [выйти]\n");
         printf ("Enter: [q]                     [d]                    [c]                 [t]         [e]  \n");
     }

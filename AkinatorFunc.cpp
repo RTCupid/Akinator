@@ -6,6 +6,72 @@
 #include"Akinator.h"
 #include "AkinatorBase.h"
 
+void RunCompare (tree_t* akntr)
+{
+    char name_first_person[SIZE_TEXT] = {};
+    printf ("Enter name of first person:\n");
+    scanf (" %s", name_first_person);
+    char name_second_person[SIZE_TEXT] = {};
+    printf ("Enter name of second person:\n");
+    scanf (" %s", name_second_person);
+
+    int* first_definition  = (int*) calloc (akntr->deep, sizeof (*first_definition));
+    int* second_definition = (int*) calloc (akntr->deep, sizeof (*second_definition));
+
+    if (!AkinatorFindDefinition (akntr, name_first_person, akntr->root, 0, first_definition))
+    {
+        printf ("The first Person is not in the database\n");
+    }
+    if (!AkinatorFindDefinition (akntr, name_second_person, akntr->root, 0, second_definition))
+    {
+        printf ("The second Person is not in the database\n");
+    }
+
+    PrintCompareDef (name_first_person, name_second_person, first_definition, second_definition, akntr);
+
+    free (first_definition);
+    first_definition = NULL;
+    free (second_definition);
+    second_definition = NULL;
+}
+
+void PrintCompareDef (char name_first_person[SIZE_TEXT], char name_second_person[SIZE_TEXT], int* first_definition, int* second_definition, tree_t* akntr)
+{
+    int i = 0;
+    if (first_definition[i] == second_definition[i])
+        printf ("%s похож на %s тем, что они: \n", name_first_person, name_second_person);
+
+    while (first_definition[i] == second_definition[i])
+    {
+        printf ("%s", akntr->crnt_node->text);
+        i++;
+        if (
+    }
+}
+
+void RunDefinition (tree_t* akntr)
+{
+    char name_person[SIZE_TEXT] = {};
+    printf ("Enter name of person:\n");
+    scanf (" %s", name_person);
+
+    int* definition = (int*) calloc (akntr->deep, sizeof (*definition));
+
+    if (AkinatorFindDefinition (akntr, name_person, akntr->root, 0, definition))
+    {
+        printf ("Person is found\n");
+        printf ("%s - ", name_person);
+        PrintDef (definition, 0, akntr->root);
+        printf ("\n");
+    }
+    else
+    {
+        printf ("The Person is not in the database\n");
+    }
+    free (definition);
+    definition = NULL;
+}
+
 bool AkinatorFindDefinition (tree_t* akntr, const char* text, node_t* crnt_node, size_t crnt_deep, int* definition)
 {
     if (!crnt_node->left)
@@ -30,9 +96,20 @@ bool AkinatorFindDefinition (tree_t* akntr, const char* text, node_t* crnt_node,
     return false;
 }
 
-void PrintDef (int* definition, size_t crnt_deep)
+void PrintDef (int* definition, size_t crnt_deep, node_t* crnt_node)
 {
-    printf ("%s ", );
+    if (!crnt_node->left)
+        return;
+    if (definition[crnt_deep])
+    {
+        printf ("%s ", crnt_node->text);
+        PrintDef (definition, crnt_deep + 1, crnt_node->left);
+    }
+    else
+    {
+        printf ("Не %s ", crnt_node->text);
+        PrintDef (definition, crnt_deep + 1, crnt_node->right);
+    }
 }
 
 void AkinatorGuessPerson (tree_t* akntr)
@@ -64,7 +141,7 @@ void AkinatorGuessPerson (tree_t* akntr)
     scanf (" %c", &answ);
     if (answ == 'y')
     {
-        printf ("Это было легко!\n\n");
+        printf ("Это было легко!\n");
         akntr->crnt_node = akntr->root;
     }
     else if (answ == 'n')
@@ -90,6 +167,9 @@ void AkinatorGuessPerson (tree_t* akntr)
 
         fprintf (akntr->dbg_log_file, "deep of tree = <%lu>\n", akntr->deep);
         fprintf (akntr->dbg_log_file, "new_question = %s\n", akntr->crnt_node->text);
+
+        printf ("Больше не проведёшь!\n");
+        akntr->crnt_node = akntr->root;
     }
 
 }
